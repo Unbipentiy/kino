@@ -14,7 +14,6 @@ class CreateFilesTable extends Migration
             $table->string('extension');
             $table->string('entity_type');
             $table->string('entity_id');
-            $table->timestamps();
         });
     }
     public function down()
