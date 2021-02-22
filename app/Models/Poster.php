@@ -17,4 +17,10 @@ class Poster extends Model
         'genre_id',
         'country',
     ];
+    public function genre(){
+        return $this->belongsTo(Genre::class, 'genre_id');
+    }
+    public function sessions(){
+        return $this->hasMany(Session::class, 'poster_id');
+    }
 }

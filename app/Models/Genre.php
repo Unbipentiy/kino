@@ -13,4 +13,7 @@ class Genre extends Model
         'name',
     ];
     public $timestamps = false;
+    public function posters(){
+        return $this->hasMany(Poster::class, 'genre_id');
+    }
 }
