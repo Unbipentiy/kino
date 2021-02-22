@@ -22,7 +22,7 @@ class AuthController extends Controller
         return redirect(route('login'));
     }
     public function viewRegistration(){
-        return view('registration');
+        return view('auth.registration');
     }
 
     public function login(Request $request){
@@ -34,7 +34,7 @@ class AuthController extends Controller
     }
 
     public function viewLogin(){
-        return view('login');
+        return view('auth.login');
     }
 
     public function logout(){
