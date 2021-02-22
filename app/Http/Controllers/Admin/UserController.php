@@ -21,4 +21,14 @@ class UserController extends Controller
         ]);
         return redirect(route('profile'));
     }
+    public function delete($id){
+        User::find($id)->delete();
+        return redirect(route('home'));
+    }
+    public function viewAll(){
+        return view(route('admin_users'), ['users' => User::all()]);
+    }
+    public function view($id){
+        return view(route('admin_user'), ['user' => User::find($id)]);
+    }
 }

@@ -4,15 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
     public function viewProfile(){
-        return redirect(route('profile'));
-    }
-    public function delete($id){
-        User::find($id)->delete();
-        return redirect(route('home'));
+        return view('profile');
     }
     public function updateProfile($id, Request  $request){
         User::find($id)->update([
@@ -25,10 +22,12 @@ class UserController extends Controller
         ]);
         return redirect(route('profile'));
     }
+    public function viewUpdateProfile(){
+        return redirect(route('update_profile'));
+    }
     public function updatePassword($id, Request $request){
         User::find($id)->update([
            'password' => Hash::make($request->password),
         ]);
-        return redirect(route('profile'));
     }
 }
