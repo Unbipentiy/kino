@@ -5,7 +5,6 @@ use Illuminate\Support\Facades\Route;
 /*Главная*/
 Route::get('/', '\App\Http\Controllers\PageController@home')->name('home');
 
-/*Пользователь*/
 
 Route::group(['middleware'=>'auth'], function (){
     Route::get('/profile', '\App\Http\Controllers\UserController@profile')->name('profile');
