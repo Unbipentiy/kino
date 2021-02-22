@@ -12,8 +12,11 @@ class AuthController extends Controller
             'email' => $request->email,
             'password' => $request->password,
             'name' => $request->name,
+            'surname' => $request->surname,
+            'middle_name' => $request->middle_name,
+            'admin' => $request->phone,
+            'born_data' => $request->born_data,
         ]);
-
     }
     public function viewRegistration(){
         return view('registration');
