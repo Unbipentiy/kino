@@ -32,4 +32,5 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/', '\App\Http\Controllers\PageController@admin')->name('admin');
     Route::get('/users', '\App\Http\Controllers\Admin\UserController@viewAll')->name('admin_users');
     Route::get('/users/{id}', '\App\Http\Controllers\Admin\UserController@view')->name('admin_user');
+    Route::post('/users/{id}', '\App\Http\Controllers\Admin\UserController@update')->name('admin_user_update');
 });
