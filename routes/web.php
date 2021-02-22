@@ -15,6 +15,7 @@ Route::post('/registration', '\App\Http\Controllers\AuthController@registration'
 Route::get('/login', '\App\Http\Controllers\AuthController@login')->name('login');
 Route::post('/login', '\App\Http\Controllers\AuthController@login')->name('login_post');
 
-
-/*Панель администратора*/
-Route::get('/admin', '\App\Http\Controllers\PageController@admin')->name('admin');
+/*Админ*/
+Route::group(['prefix' => 'admin'], function () {
+    Route::get('/', '\App\Http\Controllers\PageController@admin')->name('admin');
+});
