@@ -2,4 +2,4 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', '\App\Http\Controllers\Controller@home')->name('home');
+Route::get('/', '\App\Http\Controllers\PageController@home')->name('home');
