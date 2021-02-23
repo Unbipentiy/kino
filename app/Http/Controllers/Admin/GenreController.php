@@ -8,7 +8,8 @@ use Illuminate\Http\Request;
 
 class GenreController extends Controller
 {
-    public function viewAll() {
+    public function viewAll()
+    {
         Genre::all();
         return view('admin.');
     }

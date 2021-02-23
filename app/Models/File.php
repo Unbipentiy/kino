@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class File extends Model
 {
     use HasFactory;
+
     protected $table = 'genries';
     protected $fillable = [
         'name',
@@ -16,4 +17,10 @@ class File extends Model
         'entity_id',
     ];
     public $timestamps = false;
+
+    public function fileable()
+    {
+        return $this->morphTo();
+    }
+
 }

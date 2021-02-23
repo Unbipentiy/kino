@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Poster extends Model
 {
     use HasFactory;
+
     protected $table = 'posters';
     protected $fillable = [
         'title',
@@ -17,10 +18,19 @@ class Poster extends Model
         'genre_id',
         'country',
     ];
-    public function genre(){
+
+    public function genre()
+    {
         return $this->belongsTo(Genre::class, 'genre_id');
     }
-    public function sessions(){
+
+    public function sessions()
+    {
         return $this->hasMany(Session::class, 'poster_id');
+    }
+
+    public function files()
+    {
+        return $this->morphMany('App\File', 'fileable');
     }
 }

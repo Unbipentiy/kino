@@ -10,6 +10,7 @@ use Illuminate\Notifications\Notifiable;
 class User extends Authenticatable
 {
     use HasFactory, Notifiable;
+
     protected $table = 'users';
     protected $fillable = [
         'email',
@@ -27,4 +28,9 @@ class User extends Authenticatable
         'remember_token',
         'admin',
     ];
+
+    public function files()
+    {
+        return $this->morphMany('App\File', 'fileable');
+    }
 }

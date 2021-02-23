@@ -4,14 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Poster;
-use App\Models\User;
 use Illuminate\Http\Request;
 
 class PosterController extends Controller
 {
-
-
-
     public function viewCreate()
     {
         return view('admin.posters.create');
@@ -30,14 +26,9 @@ class PosterController extends Controller
         return redirect(route('admin_posters'));
     }
 
-    public function viewUpdate()
-    {
-        return view('admin.posters.update');
-    }
-
     public function update($id, Request $request)
     {
-        User::find($id)->update([
+        Poster::find($id)->update([
             'title' => $request->title,
             'description' => $request->description,
             'start_date' => $request->startDate,
@@ -50,9 +41,17 @@ class PosterController extends Controller
 
     public function delete($id)
     {
-        User::find($id)->delete();
+        Poster::find($id)->delete();
         return redirect(route('admin_posters'));
     }
 
+    public function viewAll()
+    {
+        return view('admin.posters.posters', ['posters' => Poster::all()]);
+    }
 
+    public function view($id)
+    {
+        return view('admin.posters.poster', ['poster' => Poster::find($id)]);
+    }
 }
