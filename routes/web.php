@@ -16,9 +16,9 @@ Route::post('/login', '\App\Http\Controllers\AuthController@login');
 
 
 /*Пользователь*/
-Route::group(['middleware'=>'auth'], function (){
+Route::group(['middleware' => 'auth'], function () {
     /*Профиль*/
-    Route::group(['prefix'=>'profile'],function (){
+    Route::group(['prefix' => 'profile'], function () {
         Route::get('/', '\App\Http\Controllers\UserController@profile')->name('profile');
         Route::get('/update-password', '\App\Http\Controllers\UserController@viewUpdatePassword')->name('update_password');
         Route::post('/update-password', '\App\Http\Controllers\UserController@updatePassword');
@@ -37,8 +37,6 @@ Route::group(['prefix' => 'admin'], function () {
     /*Админ-Пользователи*/
     Route::group(['prefix' => 'users'], function () {
         Route::get('/', '\App\Http\Controllers\Admin\UserController@viewAll');
-        Route::get('/create', '\App\Http\Controllers\Admin\UserController@viewCreate');
-        Route::post('/create', '\App\Http\Controllers\Admin\UserController@create');
         Route::get('/{id}', '\App\Http\Controllers\Admin\UserController@view');
         Route::post('/{id}', '\App\Http\Controllers\Admin\UserController@update');
         Route::get('/{id}/delete', '\App\Http\Controllers\Admin\UserController@delete');

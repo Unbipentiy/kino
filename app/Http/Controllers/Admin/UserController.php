@@ -9,12 +9,8 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
-    public function viewCreate(){
-        dd('asd');
-        return view('admin.users.user-create');
-    }
 
-    public function updateProfile($id, Request  $request){
+    public function update($id, Request  $request){
         User::find($id)->update([
             'email' => $request->email,
             'password' => Hash::make($request->password),
