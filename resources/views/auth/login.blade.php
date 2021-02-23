@@ -1,5 +1,9 @@
 @extends('main')
 
+@section('title')
+    Sign in
+@endsection
+
 @section('content')
 
     <form action="{{ route('login') }}" method="post">

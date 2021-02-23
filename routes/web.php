@@ -1,9 +1,10 @@
 <?php
 
+use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
 
 /*Главная*/
-Route::get('/', '\App\Http\Controllers\PageController@home')->name('home');
+Route::get('/', [PageController::class, 'home'])->name('home');
 
 /*Регистрация*/
 Route::get('/registration', '\App\Http\Controllers\AuthController@viewRegistration')->name('registration');
