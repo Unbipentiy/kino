@@ -18,7 +18,7 @@ class AuthController extends Controller
             'middle_name' => $request->middle_name,
             'phone' => $request->phone,
             'born_data' => $request->born_data,
-        ]);
+        ]); 
         return redirect(route('login'));
     }
     public function viewRegistration(){
