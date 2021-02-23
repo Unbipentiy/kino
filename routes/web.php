@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 
 /*Главная*/
 Route::get('/', '\App\Http\Controllers\PageController@home')->name('home');
+Route::get('/sessions', '\App\Http\Controllers\SessionController@viewMain')->name('sessions');
+Route::get('/sessions/{id}', '\App\Http\Controllers\SessionController@view')->name('session');
 
 /*Регистрация*/
 Route::get('/registration', '\App\Http\Controllers\AuthController@viewRegistration')->name('registration');

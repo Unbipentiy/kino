@@ -28,6 +28,11 @@ class PosterController extends Controller
 
     public function update($id, Request $request)
     {
+        $poster = Poster::find($id);
+
+        $po
+
+
         Poster::find($id)->update([
             'title' => $request->title,
             'description' => $request->description,
