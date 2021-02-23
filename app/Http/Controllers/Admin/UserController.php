@@ -28,7 +28,7 @@ class UserController extends Controller
     public function delete($id)
     {
         User::find($id)->delete();
-        return redirect(route('home'));
+        return redirect(route('admin'));
     }
 
     public function viewAll()
