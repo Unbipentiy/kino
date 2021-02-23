@@ -5,9 +5,15 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
+    public function showCreate(){
+        dd('asd');
+        return view('admin.users.user-create');
+    }
+
     public function updateProfile($id, Request  $request){
         User::find($id)->update([
             'email' => $request->email,
@@ -25,10 +31,10 @@ class UserController extends Controller
         User::find($id)->delete();
         return redirect(route('home'));
     }
-    public function viewAll(){
-        return view(route('admin_users'), ['users' => User::all()]);
+    public function showAll(){
+        return view('admin.users.users', ['users' => User::all()]);
     }
-    public function view($id){
-        return view(route('admin_user'), ['user' => User::find($id)]);
+    public function show($id){
+        return view('admin.users.users', ['user' => User::find($id)]);
     }
 }

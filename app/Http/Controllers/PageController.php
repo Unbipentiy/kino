@@ -10,6 +10,6 @@ class PageController extends Controller
         return view('main');
     }
     public function admin(){
-        return view('admin.home');
+        return view('admin.main');
     }
 }

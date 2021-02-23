@@ -4,7 +4,7 @@ use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
 
 /*Главная*/
-Route::get('/', [PageController::class, 'home'])->name('home');
+Route::get('/', '\App\Http\Controllers\PageController@home')->name('home');
 
 /*Регистрация*/
 Route::get('/registration', '\App\Http\Controllers\AuthController@viewRegistration')->name('registration');
@@ -17,6 +17,7 @@ Route::post('/login', '\App\Http\Controllers\AuthController@login');
 
 /*Пользователь*/
 Route::group(['middleware'=>'auth'], function (){
+    /*Профиль*/
     Route::group(['prefix'=>'profile'],function (){
         Route::get('/', '\App\Http\Controllers\UserController@profile')->name('profile');
         Route::get('/update-password', '\App\Http\Controllers\UserController@viewUpdatePassword')->name('update_password');
@@ -25,12 +26,26 @@ Route::group(['middleware'=>'auth'], function (){
         Route::post('/update-profile', '\App\Http\Controllers\UserController@updateProfile');
 
     });
+    /*Выход*/
     Route::get('/logout', '\App\Http\Controllers\AuthController@logout')->name('logout');
 });
 
 /*Админ*/
 Route::group(['prefix' => 'admin'], function () {
     Route::get('/', '\App\Http\Controllers\PageController@admin')->name('admin');
-    Route::get('/users', '\App\Http\Controllers\Admin\UserController@viewAll')->name('admin_users');
-    Route::get('/users/{id}', '\App\Http\Controllers\Admin\UserController@view')->name('admin_user');
+    /*Админ-Пользователи*/
+    Route::group(['prefix' => 'users'], function () {
+        Route::get('/', '\App\Http\Controllers\Admin\UserController@showAll');
+        Route::get('/{id}', '\App\Http\Controllers\Admin\UserController@show');
+        Route::post('/{id}', '\App\Http\Controllers\Admin\UserController@update');
+        Route::get('/create', '\App\Http\Controllers\Admin\UserController@showCreate');
+        Route::post('/create', '\App\Http\Controllers\Admin\UserController@create');
+        Route::get('/{id}/delete', '\App\Http\Controllers\Admin\UserController@delete');
+    });
+
+    Route::group(['prefix' => 'genries'], function () {
+        Route::get('/', '\App\Http\Controllers\Admin\GenreController@viewAll')->name('admin_genries');
+        Route::get('/{id}', '\App\Http\Controllers\Admin\GenreController@view')->name('admin_genre');
+    });
+
 });
