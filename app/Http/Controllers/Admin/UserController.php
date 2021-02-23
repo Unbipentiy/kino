@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
-    public function showCreate(){
+    public function viewCreate(){
         dd('asd');
         return view('admin.users.user-create');
     }
@@ -31,10 +31,10 @@ class UserController extends Controller
         User::find($id)->delete();
         return redirect(route('home'));
     }
-    public function showAll(){
+    public function viewAll(){
         return view('admin.users.users', ['users' => User::all()]);
     }
-    public function show($id){
+    public function view($id){
         return view('admin.users.users', ['user' => User::find($id)]);
     }
 }

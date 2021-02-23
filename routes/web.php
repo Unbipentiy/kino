@@ -36,10 +36,10 @@ Route::group(['prefix' => 'admin'], function () {
 
     /*Админ-Пользователи*/
     Route::group(['prefix' => 'users'], function () {
-        Route::get('/', '\App\Http\Controllers\Admin\UserController@showAll');
-        Route::get('/create', '\App\Http\Controllers\Admin\UserController@showCreate');
+        Route::get('/', '\App\Http\Controllers\Admin\UserController@viewAll');
+        Route::get('/create', '\App\Http\Controllers\Admin\UserController@viewCreate');
         Route::post('/create', '\App\Http\Controllers\Admin\UserController@create');
-        Route::get('/{id}', '\App\Http\Controllers\Admin\UserController@show');
+        Route::get('/{id}', '\App\Http\Controllers\Admin\UserController@view');
         Route::post('/{id}', '\App\Http\Controllers\Admin\UserController@update');
         Route::get('/{id}/delete', '\App\Http\Controllers\Admin\UserController@delete');
     });
