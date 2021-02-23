@@ -33,14 +33,14 @@ Route::group(['middleware'=>'auth'], function (){
 /*Админ*/
 Route::group(['prefix' => 'admin'], function () {
     Route::get('/', '\App\Http\Controllers\PageController@admin')->name('admin');
-<<<<<<< HEAD
+
     /*Админ-Пользователи*/
     Route::group(['prefix' => 'users'], function () {
         Route::get('/', '\App\Http\Controllers\Admin\UserController@showAll');
-        Route::get('/{id}', '\App\Http\Controllers\Admin\UserController@show');
-        Route::post('/{id}', '\App\Http\Controllers\Admin\UserController@update');
         Route::get('/create', '\App\Http\Controllers\Admin\UserController@showCreate');
         Route::post('/create', '\App\Http\Controllers\Admin\UserController@create');
+        Route::get('/{id}', '\App\Http\Controllers\Admin\UserController@show');
+        Route::post('/{id}', '\App\Http\Controllers\Admin\UserController@update');
         Route::get('/{id}/delete', '\App\Http\Controllers\Admin\UserController@delete');
     });
 
@@ -49,9 +49,4 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('/{id}', '\App\Http\Controllers\Admin\GenreController@view')->name('admin_genre');
     });
 
-=======
-    Route::get('/users', '\App\Http\Controllers\Admin\UserController@viewAll')->name('admin_users');
-    Route::get('/users/{id}', '\App\Http\Controllers\Admin\UserController@view')->name('admin_user');
-    Route::post('/users/{id}', '\App\Http\Controllers\Admin\UserController@update')->name('admin_user_update');
->>>>>>> master
 });
