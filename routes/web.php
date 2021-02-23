@@ -48,12 +48,12 @@ Route::group(['prefix' => 'admin'], function () {
     });
     /*Админ-Импостеры*/
     Route::group(['prefix' => 'posters'], function (){
-        Route::get('/', '\App\Http\Controllers\Admin\PosterController@viewAll');
+        Route::get('/', '\App\Http\Controllers\Admin\PosterController@viewAll')->name('admin_posters');
         Route::get('/create', '\App\Http\Controllers\Admin\PosterController@viewCreate');
         Route::post('/create', '\App\Http\Controllers\Admin\PosterController@create');
-        Route::get('/{id}', '\App\Http\Controllers\Admin\PosterController@view');
+        Route::get('/{id}', '\App\Http\Controllers\Admin\PosterController@view')->name('view_admin_poster');
         Route::post('/{id}', '\App\Http\Controllers\Admin\PosterController@update');
-        Route::get('/{id}/delete', '\App\Http\Controllers\Admin\PosterController@delete');
+        Route::get('/{id}/delete', '\App\Http\Controllers\Admin\PosterController@delete')->name('delete_admin_poster');
     });
     /*Админ-сеансы*/
     Route::group(['prefix' => 'sessions'], function (){
