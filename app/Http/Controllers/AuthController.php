@@ -9,7 +9,8 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
-    public function registration(Request $request){
+    public function registration(Request $request)
+    {
         User::create([
             'email' => $request->email,
             'password' => Hash::make($request->password),
@@ -18,26 +19,31 @@ class AuthController extends Controller
             'middle_name' => $request->middle_name,
             'phone' => $request->phone,
             'born_data' => $request->born_data,
-        ]); 
+        ]);
         return redirect(route('login'));
     }
-    public function viewRegistration(){
+
+    public function viewRegistration()
+    {
         return view('auth.registration');
     }
 
-    public function login(Request $request){
+    public function login(Request $request)
+    {
         Auth::attempt([
-           'email' => $request->email,
+            'email' => $request->email,
             'password' => $request->password,
         ]);
         return redirect(route('home'));
     }
 
-    public function viewLogin(){
+    public function viewLogin()
+    {
         return view('auth.login');
     }
 
-    public function logout(){
+    public function logout()
+    {
         Auth::logout();
         return redirect(route('login'));
     }
