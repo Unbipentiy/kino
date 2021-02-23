@@ -31,6 +31,6 @@ class User extends Authenticatable
 
     public function files()
     {
-        return $this->morphMany('App\File', 'fileable');
+        return $this->morphMany('App\File', 'entity_id');
     }
 }

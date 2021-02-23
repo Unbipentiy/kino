@@ -14,7 +14,7 @@ class CreatePostersTable extends Migration
             $table->text('description');
             $table->date('start_date');
             $table->integer('duration');
-            $table->integer('genre_id');
+            $table->string('genre');
             $table->text('country');
             $table->timestamps();
         });

@@ -19,11 +19,6 @@ class Poster extends Model
         'country',
     ];
 
-    public function genre()
-    {
-        return $this->belongsTo(Genre::class, 'genre_id');
-    }
-
     public function sessions()
     {
         return $this->hasMany(Session::class, 'poster_id');
@@ -31,6 +26,6 @@ class Poster extends Model
 
     public function files()
     {
-        return $this->morphMany('App\File', 'fileable');
+        return $this->morphMany('App\File', 'entity_id');
     }
 }
