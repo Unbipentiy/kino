@@ -7,7 +7,7 @@
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3">
         <h1 class="h2">Постер {{$poster->title}}</h1>
     </div>
-    <form action="{{ route('view_admin_poster_update') }}" method="post">
+    <form action="{{ route('view_admin_poster_update', $poster->id) }}" method="post">
         @csrf
         <div class="form-group">
             <label for="title">Title</label>

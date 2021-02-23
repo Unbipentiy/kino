@@ -8,18 +8,21 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Main</a>
+                    <a class="nav-link" href="#">Главная</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Posters</a>
+                    <a class="nav-link" href="#">Сеансы</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('sessions')}}">Афиша</a>
                 </li>
             </ul>
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('login')}}">Sign in</a>
+                    <a class="nav-link" href="{{route('login')}}">Вход</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('registration')}}">Sign up</a>
+                    <a class="nav-link" href="{{route('registration')}}">Зарегистрироваться</a>
                 </li>
             </ul>
         </div>
