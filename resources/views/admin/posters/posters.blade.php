@@ -31,8 +31,8 @@
                 <td>{{$poster->title}}</td>
                 <td>{{$poster->genre}}</td>
                 <td>{{$poster->start_date}}</td>
-                <td><a href="{{route('view_admin_poster'), $poster->id}}">Редактировать</a></td>
-                <td><a href="{{route('delete_admin_poster'), $poster->id}}">Удалить</a></td>
+                <td><a href="{{route('view_admin_poster', $poster->id)}}">Редактировать</a></td>
+                <td><a href="{{route('delete_admin_poster', $poster->id)}}">Удалить</a></td>
             </tr>
             @endforeach
             </tbody>

@@ -15,7 +15,7 @@ class Poster extends Model
         'description',
         'start_date',
         'duration',
-        'genre_id',
+        'genre',
         'country',
     ];
 
