@@ -2,16 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\File;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
-    public function viewProfile(){
+    public function viewProfile()
+    {
         return view('profile');
     }
-    public function updateProfile($id, Request  $request){
+
+    public function updateProfile($id, Request $request)
+    {
         User::find($id)->update([
             'email' => $request->email,
             'name' => $request->name,
@@ -20,14 +24,21 @@ class UserController extends Controller
             'phone' => $request->phone,
             'born_data' => $request->born_data,
         ]);
+        File::find($id, 'user')->update([
+            ''
+        ]);
         return redirect(route('profile'));
     }
-    public function viewUpdateProfile(){
+
+    public function viewUpdateProfile()
+    {
         return redirect(route('update_profile'));
     }
-    public function updatePassword($id, Request $request){
+
+    public function updatePassword($id, Request $request)
+    {
         User::find($id)->update([
-           'password' => Hash::make($request->password),
+            'password' => Hash::make($request->password),
         ]);
     }
 }

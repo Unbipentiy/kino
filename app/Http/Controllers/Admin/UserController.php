@@ -10,7 +10,8 @@ use Illuminate\Support\Facades\Hash;
 class UserController extends Controller
 {
 
-    public function update($id, Request  $request){
+    public function update($id, Request $request)
+    {
         User::find($id)->update([
             'email' => $request->email,
             'password' => Hash::make($request->password),
@@ -23,14 +24,20 @@ class UserController extends Controller
         ]);
         return redirect(route('profile'));
     }
-    public function delete($id){
+
+    public function delete($id)
+    {
         User::find($id)->delete();
         return redirect(route('home'));
     }
-    public function viewAll(){
+
+    public function viewAll()
+    {
         return view('admin.users.users', ['users' => User::all()]);
     }
-    public function view($id){
+
+    public function view($id)
+    {
         return view('admin.users.users', ['user' => User::find($id)]);
     }
 }
