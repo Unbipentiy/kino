@@ -11,7 +11,7 @@ class CreateSessionsTable extends Migration
         Schema::create('sessions', function (Blueprint $table) {
             $table->id();
             $table->integer('poster_id');
-            $table->string('date');
+            $table->timestamp('date');
             $table->integer('hall');
             $table->json('places');
         });
