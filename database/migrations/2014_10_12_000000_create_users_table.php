@@ -16,7 +16,7 @@ class CreateUsersTable extends Migration
             $table->string('surname');
             $table->string('middle_name');
             $table->boolean('admin')->default(0);
-            $table->integer('phone')->unique();
+            $table->string('phone')->unique();
             $table->integer('discount_card')->unique();
             $table->timestamp('born_data');
             $table->rememberToken();
