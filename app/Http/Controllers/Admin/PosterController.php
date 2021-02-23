@@ -20,7 +20,7 @@ class PosterController extends Controller
             'description' => $request->description,
             'start_date' => $request->startDate,
             'duration' => $request->duration,
-            'genre_id' => $request->genreId,
+            'genre' => $request->genre,
             'country' => $request->country,
         ]);
         return redirect(route('admin_posters'));
@@ -29,18 +29,21 @@ class PosterController extends Controller
     public function update($id, Request $request)
     {
         $poster = Poster::find($id);
-
-        $po
-
-
-        Poster::find($id)->update([
-            'title' => $request->title,
-            'description' => $request->description,
-            'start_date' => $request->startDate,
-            'duration' => $request->duration,
-            'genre_id' => $request->genreId,
-            'country' => $request->country,
-        ]);
+        $poster->title = $request->title;
+        $poster->description = $request->description;
+        $poster->start_date = $request->startDate;
+        $poster->duration = $request->duration;
+        $poster->genre = $request->genre;
+        $poster->country = $request->country;
+//        Poster::find($id)->update([
+//            'title' => $request->title,
+//            'description' => $request->description,
+//            'start_date' => $request->startDate,
+//            'duration' => $request->duration,
+//            'genre' => $request->genre,
+//            'country' => $request->country,
+//        ]);
+        $poster->save();
         return redirect(route('admin_posters'));
     }
 

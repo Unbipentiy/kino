@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -8,14 +8,13 @@
 
     <link rel="stylesheet" href="/css/bootstrap.min.css">
 
-    <title>Document</title>
+    <title>@yield('title')</title>
 </head>
 <body>
 <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
     <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Company name</a>
     <a class="nav-link text-white" href="{{route('home')}}">Site</a>
     <a class="nav-link text-white" href="{{route('logout')}}">Sign out</a>
-
 </nav>
 
 <div class="container-fluid">

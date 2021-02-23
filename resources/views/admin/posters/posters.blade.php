@@ -25,20 +25,16 @@
             </tr>
             </thead>
             <tbody>
+            @foreach($posters as $poster)
             <tr>
-                <td>1,001</td>
-                <td>Motherfucker</td>
-                <td>10.01.1915</td>
-                <td><a href="#">Редактировать</a></td>
-                <td><a href="#">Удалить</a></td>
+                <td>{{$poster->id}}</td>
+                <td>{{$poster->title}}</td>
+                <td>{{$poster->genre}}</td>
+                <td>{{$poster->start_date}}</td>
+                <td><a href="{{route('view_admin_poster', $poster->id)}}">Редактировать</a></td>
+                <td><a href="{{route('delete_admin_poster', $poster->id)}}">Удалить</a></td>
             </tr>
-            <tr>
-                <td>1,002</td>
-                <td>Fatherfucker</td>
-                <td>10.01.1916</td>
-                <td><a href="#">Редактировать</a></td>
-                <td><a href="#">Удалить</a></td>
-            </tr>
+            @endforeach
             </tbody>
         </table>
     </div>
