@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\File;
 use App\Models\Poster;
 use Illuminate\Http\Request;
 
@@ -15,7 +16,7 @@ class PosterController extends Controller
 
     public function create(Request $request)
     {
-        Poster::create([
+        $poster = Poster::create([
             'title' => $request->title,
             'description' => $request->description,
             'start_date' => $request->startDate,
@@ -23,34 +24,36 @@ class PosterController extends Controller
             'genre' => $request->genre,
             'country' => $request->country,
         ]);
-        return redirect(route('admin_posters'));
+        foreach ($request->file() as $file) {
+            foreach ($file as $f) {
+                $f->move(public_path('/files/img'), time().'_'.$f->getClientOriginalName());
+                File::create([
+                    'name' => $f->getClientOriginalName(),
+                    'entity_type' => 'poster',
+                    'entity_id' => $poster->id,
+                ]);
+            }
+        }
+        return redirect(route('admin.posters'));
     }
 
     public function update($id, Request $request)
     {
-        $poster = Poster::find($id);
-        $poster->title = $request->title;
-        $poster->description = $request->description;
-        $poster->start_date = $request->startDate;
-        $poster->duration = $request->duration;
-        $poster->genre = $request->genre;
-        $poster->country = $request->country;
-//        Poster::find($id)->update([
-//            'title' => $request->title,
-//            'description' => $request->description,
-//            'start_date' => $request->startDate,
-//            'duration' => $request->duration,
-//            'genre' => $request->genre,
-//            'country' => $request->country,
-//        ]);
-        $poster->save();
-        return redirect(route('admin_posters'));
+        Poster::find($id)->update([
+            'title' => $request->title,
+            'description' => $request->description,
+            'start_date' => $request->startDate,
+            'duration' => $request->duration,
+            'genre' => $request->genre,
+            'country' => $request->country,
+        ]);
+        return redirect(route('admin.posters'));
     }
 
     public function delete($id)
     {
         Poster::find($id)->delete();
-        return redirect(route('admin_posters'));
+        return redirect(route('admin.posters'));
     }
 
     public function viewAll()

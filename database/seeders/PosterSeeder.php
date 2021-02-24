@@ -9,18 +9,13 @@ use Illuminate\Support\Str;
 
 class PosterSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
     public function run()
     {
         $countries = [
             'Россия',
             'США',
             'Казахстан',
-            'Нигр',
+            'Нигер',
             'Китай',
         ];
 
@@ -31,7 +26,7 @@ class PosterSeeder extends Seeder
             'start_date' => Carbon::now()->addDays(rand(0, 4))->format('Y/m/d'),
             'duration' => rand(100, 130),
             'genre' => Str::random(10),
-            'country' => $countries[rand(0,3)],
+            'country' => $countries[rand(0,4)],
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);

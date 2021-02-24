@@ -1,43 +1,35 @@
 @extends('admin.main')
 @section('title')
-    Пользователи
+    Users
 @endsection
-@section('content')
+@section('admin-content')
 
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3">
-        <h1 class="h2">Пользователи</h1>
-        <div class="btn-toolbar mb-2 mb-md-0">
-            <div class="btn-group mr-2">
-                <a href="/admin/users/create" class="btn btn-outline-secondary">Создать пользователя</a>
-            </div>
-        </div>
+        <h1 class="h2">Users</h1>
     </div>
     <div class="table-responsive">
         <table class="table table-striped table-sm">
             <thead>
             <tr>
                 <th>#</th>
-                <th>Header</th>
-                <th>Header</th>
-                <th>Header</th>
-                <th>Header</th>
+                <th>Email</th>
+                <th>Name</th>
+                <th>Discount card</th>
+                <th>Edit</th>
+                <th>Delete</th>
             </tr>
             </thead>
             <tbody>
+            @foreach($users as $user)
             <tr>
-                <td>1,001</td>
-                <td>Lorem</td>
-                <td>ipsum</td>
-                <td>dolor</td>
-                <td>sit</td>
+                <td>{{$user->id}}</td>
+                <td>{{$user->email}}</td>
+                <td>{{$user->name.' '.$user->surname.' '.$user->middle_name}}</td>
+                <td>{{$user->discount_card}}</td>
+                <td><a href="{{route('admin.user', $user->id)}}">Edit</a></td>
+                <td><a href="{{route('admin.user.delete', $user->id)}}">Delete</a></td>
             </tr>
-            <tr>
-                <td>1,002</td>
-                <td>amet</td>
-                <td>consectetur</td>
-                <td>adipiscing</td>
-                <td>elit</td>
-            </tr>
+            @endforeach
             </tbody>
         </table>
     </div>
