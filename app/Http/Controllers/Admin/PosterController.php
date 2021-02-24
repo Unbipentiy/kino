@@ -26,9 +26,9 @@ class PosterController extends Controller
         ]);
         foreach ($request->file() as $file) {
             foreach ($file as $f) {
-                $f->move(public_path('/files/img'), time().'_'.$f->getClientOriginalName());
+                $f->move(public_path('/files/posters/img'), time() . '_' . $f->getClientOriginalName());
                 File::create([
-                    'name' => $f->getClientOriginalName(),
+                    'name' => time() . '_' . $f->getClientOriginalName(),
                     'entity_type' => 'poster',
                     'entity_id' => $poster->id,
                 ]);
@@ -53,6 +53,11 @@ class PosterController extends Controller
     public function delete($id)
     {
         Poster::find($id)->delete();
+        $files = File::where('entity_id', $id)->where('entity_type', 'poster');
+        foreach ($files as $file) {
+            \Illuminate\Support\Facades\File::delete('/files/posters/img/' . $file->name);
+        }
+        $files->delete();
         return redirect(route('admin.posters'));
     }
 

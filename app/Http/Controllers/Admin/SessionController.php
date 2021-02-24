@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Session;
+use Illuminate\Http\File;
 use Illuminate\Http\Request;
 
 class SessionController extends Controller
@@ -43,7 +44,7 @@ class SessionController extends Controller
 
     public function viewAll()
     {
-        return view('admin.sessions.sessions', ['sessions' => Session::all()]);
+        return view('admin.sessions.sessions', ['sessions' => Session::with('poster')->get()]);
     }
 
     public function view($id)

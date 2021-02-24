@@ -43,7 +43,7 @@ Route::group(['prefix' => 'admin'], function () {
         Route::post('/{id}', '\App\Http\Controllers\Admin\UserController@update')->name('admin.user.update');;
         Route::get('/{id}/delete', '\App\Http\Controllers\Admin\UserController@delete')->name('admin.user.delete');;
     });
-    /*Админ-Постеры*/
+    /*Админ-Импостеры*/
     Route::group(['prefix' => 'posters'], function (){
         Route::get('/', '\App\Http\Controllers\Admin\PosterController@viewAll')->name('admin.posters');
         Route::get('/create', '\App\Http\Controllers\Admin\PosterController@viewCreate')->name('admin.poster.create.view');
@@ -54,11 +54,11 @@ Route::group(['prefix' => 'admin'], function () {
     });
     /*Админ-сеансы*/
     Route::group(['prefix' => 'sessions'], function (){
-        Route::get('/', '\App\Http\Controllers\Admin\SessionController@viewAll');
-        Route::get('/create', '\App\Http\Controllers\Admin\SessionController@viewCreate');
-        Route::post('/create', '\App\Http\Controllers\Admin\SessionController@create');
-        Route::get('/{id}', '\App\Http\Controllers\Admin\SessionController@view');
-        Route::post('/{id}', '\App\Http\Controllers\Admin\SessionController@update');
-        Route::get('/{id}/delete', '\App\Http\Controllers\Admin\SessionController@delete');
+        Route::get('/', '\App\Http\Controllers\Admin\SessionController@viewAll')->name('admin.sessions');
+        Route::get('/create', '\App\Http\Controllers\Admin\SessionController@viewCreate')->name('admin.session.create.view');
+        Route::post('/create', '\App\Http\Controllers\Admin\SessionController@create')->name('admin.session.create');
+        Route::get('/{id}', '\App\Http\Controllers\Admin\SessionController@view')->name('admin.session');
+        Route::post('/{id}', '\App\Http\Controllers\Admin\SessionController@update')->name('admin.session.update');
+        Route::get('/{id}/delete', '\App\Http\Controllers\Admin\SessionController@delete')->name('admin.session.delete');
     });
 });

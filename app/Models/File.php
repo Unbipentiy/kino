@@ -23,4 +23,8 @@ class File extends Model
         return $this->morphTo();
     }
 
+    public function delete($params)
+    {
+        \Illuminate\Support\Facades\File::delete($params);
+    }
 }

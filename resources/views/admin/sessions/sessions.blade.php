@@ -17,6 +17,7 @@
             <thead>
             <tr>
                 <th>#</th>
+                <th>Poster</th>
                 <th>Time</th>
                 <th>Hall</th>
                 <th>Edit</th>
@@ -24,20 +25,16 @@
             </tr>
             </thead>
             <tbody>
+            @foreach($sessions as $session)
             <tr>
-                <td>1,001</td>
-                <td>Lorem</td>
-                <td>ipsum</td>
-                <td><a href="#">Edit</a></td>
-                <td><a href="#">Delete</a></td>
+                <td>{{$session->id}}</td>
+                <td>{{$session->poster->title}}</td>
+                <td>{{$session->date}}</td>
+                <td>{{$session->hall}}</td>
+                <td><a href="{{route('admin.session', $session->id)}}">Edit</a></td>
+                <td><a href="{{route('admin.session.delete', $session->id)}}">Delete</a></td>
             </tr>
-            <tr>
-                <td>1,002</td>
-                <td>amet</td>
-                <td>consectetur</td>
-                <td><a href="#">Edit</a></td>
-                <td><a href="#">Delete</a></td>
-            </tr>
+            @endforeach
             </tbody>
         </table>
     </div>

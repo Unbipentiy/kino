@@ -16,7 +16,7 @@ class Session extends Model
         'places',
     ];
     public $timestamps = false;
-    public function Poster(){
+    public function poster(){
         return $this->belongsTo(Poster::class, 'poster_id');
     }
 }
