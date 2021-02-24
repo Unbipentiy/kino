@@ -36,10 +36,10 @@ Route::group(['prefix' => 'admin'], function () {
 
     /*Админ-Пользователи*/
     Route::group(['prefix' => 'users'], function () {
-        Route::get('/', '\App\Http\Controllers\Admin\UserController@viewAll');
-        Route::get('/{id}', '\App\Http\Controllers\Admin\UserController@view');
-        Route::post('/{id}', '\App\Http\Controllers\Admin\UserController@update');
-        Route::get('/{id}/delete', '\App\Http\Controllers\Admin\UserController@delete');
+        Route::get('/', '\App\Http\Controllers\Admin\UserController@viewAll')->name('admin_users');
+        Route::get('/{id}', '\App\Http\Controllers\Admin\UserController@view')->name('admin_user');
+        Route::post('/{id}', '\App\Http\Controllers\Admin\UserController@update')->name('admin_user_update');;
+        Route::get('/{id}/delete', '\App\Http\Controllers\Admin\UserController@delete')->name('admin_user_delete');;
     });
     /*Админ-Жанры*/
     Route::group(['prefix' => 'genries'], function () {

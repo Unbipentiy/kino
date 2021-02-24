@@ -12,8 +12,8 @@
 </head>
 <body>
 <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
-    <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Company name</a>
-    <a class="nav-link text-white" href="{{route('home')}}">Site</a>
+    <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="{{route('home')}}#">Main page</a>
+{{--    <a class="nav-link text-white" href="{{route('home')}}">Site</a>--}}
     <a class="nav-link text-white" href="{{route('logout')}}">Sign out</a>
 </nav>
 
@@ -23,13 +23,13 @@
             <div class="sidebar-sticky">
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a class="nav-link active" href="/admin/posters">Афиша</a>
+                        <a class="nav-link active" href="{{route('admin_posters')}}">Афиша</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" href="/admin/sessions">Сеансы</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="/admin/users">Пользователи</a>
+                        <a class="nav-link active" href="{{route('admin_users')}}">Пользователи</a>
                     </li>
                 </ul>
             </div>

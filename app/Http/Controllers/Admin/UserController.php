@@ -22,7 +22,7 @@ class UserController extends Controller
             'phone' => $request->phone,
             'born_data' => $request->born_data,
         ]);
-        return redirect(route('profile'));
+        return redirect(route('admin_users'));
     }
 
     public function delete($id)
@@ -38,6 +38,6 @@ class UserController extends Controller
 
     public function view($id)
     {
-        return view('admin.users.users', ['user' => User::find($id)]);
+        return view('admin.users.user', ['user' => User::find($id)]);
     }
 }
