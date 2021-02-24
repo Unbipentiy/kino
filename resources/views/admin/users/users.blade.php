@@ -1,11 +1,11 @@
 @extends('admin.main')
 @section('title')
-    Пользователи
+    Users
 @endsection
-@section('content')
+@section('admin-content')
 
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3">
-        <h1 class="h2">Пользователи</h1>
+        <h1 class="h2">Users</h1>
     </div>
     <div class="table-responsive">
         <table class="table table-striped table-sm">
@@ -13,10 +13,10 @@
             <tr>
                 <th>#</th>
                 <th>Email</th>
-                <th>ФИО</th>
-                <th>Дисконтная карта</th>
-                <th>Редактировать</th>
-                <th>Удалить</th>
+                <th>Name</th>
+                <th>Discount card</th>
+                <th>Edit</th>
+                <th>Delete</th>
             </tr>
             </thead>
             <tbody>
@@ -26,8 +26,8 @@
                 <td>{{$user->email}}</td>
                 <td>{{$user->name.' '.$user->surname.' '.$user->middle_name}}</td>
                 <td>{{$user->discount_card}}</td>
-                <td><a href="{{route('admin_user', $user->id)}}">Редактировать</a></td>
-                <td><a href="{{route('admin_user_delete', $user->id)}}">Удалить</a></td>
+                <td><a href="{{route('admin.user', $user->id)}}">Edit</a></td>
+                <td><a href="{{route('admin.user.delete', $user->id)}}">Delete</a></td>
             </tr>
             @endforeach
             </tbody>

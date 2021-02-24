@@ -16,7 +16,7 @@ class PosterController extends Controller
 
     public function create(Request $request)
     {
-        Poster::create([
+        $poster = Poster::create([
             'title' => $request->title,
             'description' => $request->description,
             'start_date' => $request->startDate,
@@ -26,19 +26,15 @@ class PosterController extends Controller
         ]);
         foreach ($request->file() as $file) {
             foreach ($file as $f) {
-                $f->move(public_path('/img'), time().'_'.$f->getClientOriginalName());
+                $f->move(public_path('/files/img'), time().'_'.$f->getClientOriginalName());
                 File::create([
                     'name' => $f->getClientOriginalName(),
                     'entity_type' => 'poster',
-                    'entity_id' => $request->id,//?
+                    'entity_id' => $poster->id,
                 ]);
             }
         }
-        File::create([
-            'entity_type' => 'poster',
-            'entity_id' => $request->id,//?
-        ]);
-        return redirect(route('admin_posters'));
+        return redirect(route('admin.posters'));
     }
 
     public function update($id, Request $request)
@@ -51,13 +47,13 @@ class PosterController extends Controller
             'genre' => $request->genre,
             'country' => $request->country,
         ]);
-        return redirect(route('admin_posters'));
+        return redirect(route('admin.posters'));
     }
 
     public function delete($id)
     {
         Poster::find($id)->delete();
-        return redirect(route('admin_posters'));
+        return redirect(route('admin.posters'));
     }
 
     public function viewAll()

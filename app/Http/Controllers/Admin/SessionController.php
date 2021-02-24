@@ -21,7 +21,7 @@ class SessionController extends Controller
             'hall' => $request->hall,
             'places' => $request->places,
         ]);
-        return redirect(route('admin_sessions'));
+        return redirect(route('admin.sessions'));
     }
 
     public function update($id, Request $request)
@@ -32,13 +32,13 @@ class SessionController extends Controller
             'hall' => $request->hall,
             'places' => $request->places,
         ]);
-        return redirect(route('admin_sessions'));
+        return redirect(route('admin.sessions'));
     }
 
     public function delete($id)
     {
         Session::find($id)->delete();
-        return redirect(route('admin_sessions'));
+        return redirect(route('admin.sessions'));
     }
 
     public function viewAll()

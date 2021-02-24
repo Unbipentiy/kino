@@ -22,7 +22,7 @@ class UserController extends Controller
             'phone' => $request->phone,
             'born_data' => $request->born_data,
         ]);
-        return redirect(route('admin_users'));
+        return redirect(route('admin.users'));
     }
 
     public function delete($id)

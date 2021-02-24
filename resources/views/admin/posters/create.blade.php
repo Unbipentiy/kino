@@ -2,12 +2,12 @@
 @section('title')
     Создание постера
 @endsection
-@section('content')
+@section('admin-content')
 
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3">
         <h1 class="h2">Создание постера</h1>
     </div>
-    <form action="{{route('admin_poster_create_post')}}" enctype="multipart/form-data" method="post">
+    <form action="{{route('admin.poster.create')}}" enctype="multipart/form-data" method="post">
         @csrf
         <div class="form-group">
             <label for="title">Title</label>

@@ -2,12 +2,12 @@
 @section('title')
     {{$user->name.' '.$user->surname.' '.$user->middle_name}}
 @endsection
-@section('content')
+@section('admin-content')
 
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3">
-        <h1 class="h2">Пользователь {{$user->title}}</h1>
+        <h1 class="h2">User {{$user->name.' '.$user->surname.' '.$user->middle_name}}</h1>
     </div>
-    <form action="{{ route('admin_user_update', $user->id)}}" method="post">
+    <form action="{{ route('admin.user.update', $user->id)}}" method="post">
         @csrf
         <div class="form-group">
             <label for="name">Name</label>
