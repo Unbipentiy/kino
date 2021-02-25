@@ -33,9 +33,12 @@
             <label for="country">Country</label>
             <input type="text" class="form-control" value="{{$poster->country}}" name="country">
         </div>
-        @foreach($files as $file)
-            <p>{{$file->name}}</p>
-        @endforeach
+        <div class="form-group">
+            @foreach($files as $file)
+                <img src="/files/posters/img/{{$file->name}}"class="img-thumbnail" width="550px" alt="{{$file->name}}">
+                <a href="{{route('admin.poster.picture_delete', $file->id)}}">Delete picture</a>
+            @endforeach
+        </div>
         <input type="submit" class="btn btn-primary" value="Edit">
     </form>
 
