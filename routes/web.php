@@ -51,6 +51,7 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('/{id}', '\App\Http\Controllers\Admin\PosterController@view')->name('admin.poster');
         Route::post('/{id}', '\App\Http\Controllers\Admin\PosterController@update')->name('admin.poster.update');
         Route::get('/{id}/delete', '\App\Http\Controllers\Admin\PosterController@delete')->name('admin.poster.delete');
+        Route::get('/{id}/{file}/delete', '\App\Http\Controllers\Admin\PosterController@picture_delete')->name('admin.poster.picture_delete');
     });
     /*Админ-сеансы*/
     Route::group(['prefix' => 'sessions'], function (){

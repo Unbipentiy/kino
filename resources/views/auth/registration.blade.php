@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <form action="{{ route('registration') }}" method="post">
+    <form action="/login" method="post">
         @csrf
         <input type="email" name="email" placeholder="Email">
         <input type="password" name="password" placeholder="Password">

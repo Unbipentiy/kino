@@ -36,7 +36,7 @@
         <div class="form-group">
             @foreach($files as $file)
                 <img src="/files/posters/img/{{$file->name}}"class="img-thumbnail" width="550px" alt="{{$file->name}}">
-                <a href="{{route('admin.poster.picture_delete', $file->id)}}">Delete picture</a>
+                <a href="{{route('admin.poster.picture_delete',[$poster->id, $file->id])}}">Delete picture</a>
             @endforeach
         </div>
         <input type="submit" class="btn btn-primary" value="Edit">

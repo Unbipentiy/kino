@@ -50,8 +50,10 @@ class PosterController extends Controller
         return redirect(route('admin.posters'));
     }
 
-    public function pictureDelete($id, Request $request){
-        File::find($id)->delete();
+    public function picture_delete($poster, File $file){
+        \Illuminate\Support\Facades\File::delete('/files/posters/img'. $file->name);
+        $file->delete();
+        return redirect(route('admin.poster', $poster));
     }
 
     public function delete($id)
