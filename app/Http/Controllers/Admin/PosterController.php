@@ -39,7 +39,7 @@ class PosterController extends Controller
 
     public function update($id, Request $request)
     {
-        Poster::find($id)->update([
+        $poster = Poster::find($id)->update([
             'title' => $request->title,
             'description' => $request->description,
             'start_date' => $request->startDate,
@@ -47,6 +47,16 @@ class PosterController extends Controller
             'genre' => $request->genre,
             'country' => $request->country,
         ]);
+        foreach ($request->file() as $file) {
+            foreach ($file as $f) {
+                $f->move(public_path('/files/posters/img'), time() . '_' . $f->getClientOriginalName());
+                File::create([
+                    'name' => time() . '_' . $f->getClientOriginalName(),
+                    'entity_type' => 'App\Models\Poster',
+                    'entity_id' => $id,
+                ]);
+            }
+        }
         return redirect(route('admin.posters'));
     }
 

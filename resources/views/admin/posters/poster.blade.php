@@ -39,6 +39,10 @@
                 <a href="{{route('admin.poster.picture_delete',[$poster->id, $file->id])}}">Delete picture</a>
             @endforeach
         </div>
+        <div class="form-group">
+            <label for="file[]">Photos</label>
+            <input type="file" class="form-control" multiple name="file[]">
+        </div>
         <input type="submit" class="btn btn-primary" value="Edit">
     </form>
 
