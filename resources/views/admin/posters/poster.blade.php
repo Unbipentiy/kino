@@ -3,7 +3,7 @@
     {{'Poster '.$poster->title}}
 @endsection
 @section('admin-content')
-
+    {{dd($files)}}
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3">
         <h1 class="h2">Edit poster {{$poster->title}}</h1>
     </div>
@@ -33,6 +33,9 @@
             <label for="country">Country</label>
             <input type="text" class="form-control" value="{{$poster->country}}" name="country">
         </div>
+{{--        @foreach($files as $file)--}}
+{{--            <p>{{$file->entity_id}}</p>--}}
+{{--        @endforeach--}}
         <input type="submit" class="btn btn-primary" value="Send">
     </form>
 

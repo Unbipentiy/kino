@@ -26,6 +26,6 @@ class Poster extends Model
 
     public function files()
     {
-        return $this->morphMany('App\File', 'entity_id');
+        return $this->morphMany('App\Models\File', 'entity');
     }
 }

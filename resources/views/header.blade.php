@@ -11,18 +11,15 @@
                     <a class="nav-link" href="{{route('admin')}}">Admin</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Сеансы</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{route('sessions')}}">Афиша</a>
+                    <a class="nav-link" href="{{route('sessions')}}">Sessions</a>
                 </li>
             </ul>
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('login')}}">Вход</a>
+                    <a class="nav-link" href="{{route('login')}}">Sign In</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('registration')}}">Зарегистрироваться</a>
+                    <a class="btn btn-outline-secondary" id="reg-btn" href="{{route('registration')}}">Sign Up</a>
                 </li>
             </ul>
         </div>

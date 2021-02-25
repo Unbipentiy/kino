@@ -68,6 +68,11 @@ class PosterController extends Controller
 
     public function view($id)
     {
-        return view('admin.posters.poster', ['poster' => Poster::find($id)]);
+        $poster = Poster::find($id);
+//        foreach ($poster->files as $file){
+//            $fileable = $file->fileable;
+            $files = File::where('entity_id', $id)->where('entity_type', 'poster');
+//        }
+        return view('admin.posters.poster', ['poster' => $poster, 'files' => $files]);
     }
 }
