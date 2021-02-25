@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\File;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -32,10 +33,16 @@ class UserController extends Controller
         return view('profileUpdate');
     }
 
-    public function updatePassword($id, Request $request)
+    public function viewUpdatePassword()
     {
-        User::find($id)->update([
+        return view('passwordUpdate');
+    }
+
+    public function updatePassword(Request $request)
+    {
+        User::find(Auth::user()->id)->update([
             'password' => Hash::make($request->password),
         ]);
+        return redirect(route('profile'));
     }
 }
