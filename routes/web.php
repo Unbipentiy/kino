@@ -21,7 +21,7 @@ Route::post('/login', '\App\Http\Controllers\AuthController@login');
 Route::group(['middleware' => 'auth'], function () {
     /*Профиль*/
     Route::group(['prefix' => 'profile'], function () {
-        Route::get('/', '\App\Http\Controllers\UserController@profile')->name('profile');
+        Route::get('/', '\App\Http\Controllers\UserController@viewProfile')->name('profile');
         Route::get('/update-password', '\App\Http\Controllers\UserController@viewUpdatePassword')->name('update.password');
         Route::post('/update-password', '\App\Http\Controllers\UserController@updatePassword');
         Route::get('/update-profile', '\App\Http\Controllers\UserController@viewUpdateProfile')->name('update.profile');
@@ -33,7 +33,7 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 /*Админ*/
-Route::group(['prefix' => 'admin'], function () {
+Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::get('/', '\App\Http\Controllers\PageController@admin')->name('admin');
 
     /*Админ-Пользователи*/
@@ -44,7 +44,7 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('/{id}/delete', '\App\Http\Controllers\Admin\UserController@delete')->name('admin.user.delete');;
     });
     /*Админ-Импостеры*/
-    Route::group(['prefix' => 'posters'], function (){
+    Route::group(['prefix' => 'posters'], function () {
         Route::get('/', '\App\Http\Controllers\Admin\PosterController@viewAll')->name('admin.posters');
         Route::get('/create', '\App\Http\Controllers\Admin\PosterController@viewCreate')->name('admin.poster.create.view');
         Route::post('/create', '\App\Http\Controllers\Admin\PosterController@create')->name('admin.poster.create');
@@ -54,7 +54,7 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('/{id}/{file}/delete', '\App\Http\Controllers\Admin\PosterController@picture_delete')->name('admin.poster.picture_delete');
     });
     /*Админ-сеансы*/
-    Route::group(['prefix' => 'sessions'], function (){
+    Route::group(['prefix' => 'sessions'], function () {
         Route::get('/', '\App\Http\Controllers\Admin\SessionController@viewAll')->name('admin.sessions');
         Route::get('/create', '\App\Http\Controllers\Admin\SessionController@viewCreate')->name('admin.session.create.view');
         Route::post('/create', '\App\Http\Controllers\Admin\SessionController@create')->name('admin.session.create');

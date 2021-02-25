@@ -19,6 +19,7 @@ class AuthController extends Controller
             'middle_name' => $request->middle_name,
             'phone' => $request->phone,
             'born_data' => $request->born_data,
+            'discount_card' => rand(1000, 9999),
         ]);
         return redirect(route('login'));
     }
@@ -34,7 +35,7 @@ class AuthController extends Controller
             'email' => $request->email,
             'password' => $request->password,
         ]);
-        return redirect(route('home'));
+        return redirect(route('profile'));
     }
 
     public function viewLogin()

@@ -24,15 +24,12 @@ class UserController extends Controller
             'phone' => $request->phone,
             'born_data' => $request->born_data,
         ]);
-        File::find($id, 'user')->update([
-            ''
-        ]);
         return redirect(route('profile'));
     }
 
     public function viewUpdateProfile()
     {
-        return redirect(route('update_profile'));
+        return view('profileUpdate');
     }
 
     public function updatePassword($id, Request $request)

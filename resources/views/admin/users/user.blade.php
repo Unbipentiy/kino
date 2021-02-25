@@ -38,6 +38,10 @@
             <input type="text" class="form-control" value="{{$user->born_data}}" name="born_data">
         </div>
         <div class="form-group">
+            <label for="discount_card">Discount Card</label>
+            <input type="text" disabled class="form-control" value="{{$user->discount_card}}" name="discount_card">
+        </div>
+        <div class="form-group">
             <label for="admin">Admin:</label>
             <input type="hidden" value="0" name="admin">
             <input type="checkbox" value="1" @if ($user->admin == 1)checked="checked"@endif name="admin">
