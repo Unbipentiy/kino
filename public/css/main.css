@@ -6,6 +6,11 @@ html,
 body {
     height: 100%;
 }
+
+.h2 {
+    margin-top: 20px;
+}
+
 .wrapper {
     display: flex;
     flex-direction: column;
@@ -16,4 +21,25 @@ body {
 }
 .footer {
     flex: 0 0 auto;
+}
+
+.places-y {
+    display: flex;
+    justify-content: center;
+}
+
+.places-y p {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    margin: 0;
+}
+
+.place {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
 }

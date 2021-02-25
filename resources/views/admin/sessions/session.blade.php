@@ -21,6 +21,21 @@
             <label for="startDate">Start date</label>
             <input type="datetime" class="form-control" value="{{$session->date}}" name="startDate">
         </div>
+        <div class="places">
+            @for($y = 1; $y<=10; $y++)
+                <div class="places-y">
+                    <p>{{$y}}</p>
+                    @for($x = 1; $x<=20; $x++)
+                        @if($session->places[strval($x)][strval($y)] == 1)
+                            <div class="place"></div>
+                        @else
+                            <div class="place"></div>
+                        @endif
+                    @endfor
+                    <p>{{$y}}</p>
+                </div>
+            @endfor
+        </div>
         <input type="submit" class="btn btn-primary" value="Edit">
     </form>
 

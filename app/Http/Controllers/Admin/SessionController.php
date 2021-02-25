@@ -49,6 +49,8 @@ class SessionController extends Controller
 
     public function view($id)
     {
-        return view('admin.sessions.session', ['session' => Session::find($id)]);
+        $session = Session::find($id);
+        $session->places = json_decode($session->places, true);
+        return view('admin.sessions.session', ['session' => $session]);
     }
 }
