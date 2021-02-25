@@ -42,7 +42,7 @@
             <input type="hidden" value="0" name="admin">
             <input type="checkbox" value="1" @if ($user->admin == 1)checked="checked"@endif name="admin">
         </div>
-        <input type="submit" class="btn btn-primary" value="Send">
+        <input type="submit" class="btn btn-primary" value="Edit">
     </form>
 
 @endsection

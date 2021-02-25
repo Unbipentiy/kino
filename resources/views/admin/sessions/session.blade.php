@@ -21,7 +21,7 @@
             <label for="startDate">Start date</label>
             <input type="datetime" class="form-control" value="{{$session->date}}" name="startDate">
         </div>
-        <input type="submit" class="btn btn-primary" value="Send">
+        <input type="submit" class="btn btn-primary" value="Edit">
     </form>
 
 @endsection

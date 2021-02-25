@@ -29,7 +29,7 @@ class PosterController extends Controller
                 $f->move(public_path('/files/posters/img'), time() . '_' . $f->getClientOriginalName());
                 File::create([
                     'name' => time() . '_' . $f->getClientOriginalName(),
-                    'entity_type' => 'poster',
+                    'entity_type' => 'App\Models\Poster',
                     'entity_id' => $poster->id,
                 ]);
             }
@@ -53,9 +53,9 @@ class PosterController extends Controller
     public function delete($id)
     {
         Poster::find($id)->delete();
-        $files = File::where('entity_id', $id)->where('entity_type', 'poster');
+        $files = File::where('entity_id', $id)->where('entity_type', 'App\Models\Poster');
         foreach ($files as $file) {
-            \Illuminate\Support\Facades\File::delete('/files/posters/img/' . $file->name);
+            \Illuminate\Support\Facades\File::delete('/files/posters/img'. $file->name);
         }
         $files->delete();
         return redirect(route('admin.posters'));
@@ -69,10 +69,6 @@ class PosterController extends Controller
     public function view($id)
     {
         $poster = Poster::find($id);
-//        foreach ($poster->files as $file){
-//            $fileable = $file->fileable;
-            $files = File::where('entity_id', $id)->where('entity_type', 'poster');
-//        }
-        return view('admin.posters.poster', ['poster' => $poster, 'files' => $files]);
+        return view('admin.posters.poster', ['poster' => $poster, 'files' => $poster->files]);
     }
 }
