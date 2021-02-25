@@ -13,7 +13,7 @@ Route::get('/registration', '\App\Http\Controllers\AuthController@viewRegistrati
 Route::post('/registration', '\App\Http\Controllers\AuthController@registration');
 
 /*Логин*/
-Route::get('/login', '\App\Http\Controllers\AuthController@login')->name('login');
+Route::get('/login', '\App\Http\Controllers\AuthController@viewLogin')->name('login');
 Route::post('/login', '\App\Http\Controllers\AuthController@login');
 
 
